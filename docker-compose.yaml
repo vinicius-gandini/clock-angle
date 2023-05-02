@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    container_name: clock-angle
+    build:
+      context: .
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/app:cached
+
+  postgres:
+    container_name: clock-angle-postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: clock
+    ports:
+      - 5432:5432
