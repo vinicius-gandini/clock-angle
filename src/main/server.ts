@@ -1,5 +1,6 @@
 import { app } from '@/infra/express/app';
 import { PostgreConnection } from '@/infra/knex/connection';
+import '@/common/container';
 
 import { env } from './config';
 
