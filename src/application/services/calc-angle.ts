@@ -1,11 +1,10 @@
 import { inject, injectable } from 'tsyringe';
 
 import { ServiceKeys } from '@/common/container/keys';
-import { CalcAngleRepository } from '@/domain/repositories/calc-angle';
-import { SaveAngleRepository } from '@/domain/repositories';
+import { CalcAngleRepository, SaveAngleRepository } from '@/domain/repositories';
 
 @injectable()
-export class CalcAngleService implements CalcAngleRepository {
+export class CalcAngleService {
   constructor(
     @inject(ServiceKeys.CALC_ANGLE)
     private readonly calcAngleRepository: CalcAngleRepository,
@@ -17,7 +16,7 @@ export class CalcAngleService implements CalcAngleRepository {
     params: CalcAngleRepository.Params,
   ): Promise<CalcAngleRepository.Result> {
     const { hour, minute } = params;
-    const calculedAngle = await this.calcAngleRepository.calc(params);
+    const calculedAngle = await this.calcAngleRepository.retrieve(params);
 
     if (calculedAngle) {
       return { angle: calculedAngle.angle };

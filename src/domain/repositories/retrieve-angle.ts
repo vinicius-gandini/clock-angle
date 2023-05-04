@@ -3,7 +3,7 @@ import { Angle } from "../entities";
 import { IsNotEmpty } from "class-validator";
 
 export interface CalcAngleRepository {
-  calc(
+  retrieve(
     params: CalcAngleRepository.Params,
   ): Promise<CalcAngleRepository.Result>;
 }

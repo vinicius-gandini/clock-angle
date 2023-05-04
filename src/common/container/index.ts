@@ -1,8 +1,7 @@
 import { ServiceKeys } from './keys';
 import { CalcAngleRepository, SaveAngleRepository } from '@/domain/repositories';
-import { CalcAngleRepositoryImp } from '@/infra/knex/repositories/angles/calc-angle';
+import { CalcAngleRepositoryImp, SaveAngleRepositoryImp } from '@/infra/knex/repositories/angles/';
 import { container } from 'tsyringe';
-import { SaveAngleRepositoryImp } from '@/infra/knex/repositories/angles';
 
 container.registerSingleton<CalcAngleRepository>(
   ServiceKeys.CALC_ANGLE,
