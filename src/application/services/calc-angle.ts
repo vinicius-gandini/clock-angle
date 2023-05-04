@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { ServiceKeys } from '@/common/container/keys';
 import { CalcAngleRepository, SaveAngleRepository } from '@/domain/repositories';
+import { clockAngles } from '@/common';
 
 @injectable()
 export class CalcAngleService {
@@ -22,8 +23,8 @@ export class CalcAngleService {
       return { angle: calculedAngle.angle };
     }
 
-    const hourAngle = (hour % 12) * 30;
-    const minuteAngle = minute * 6;
+    const hourAngle = (hour % 12) * clockAngles.anglePerHour;
+    const minuteAngle = minute * clockAngles.anglePerMinute;
     const diff = Math.abs(hourAngle - minuteAngle);
     const finalAngle = Math.min(diff, 360 - diff);
 
