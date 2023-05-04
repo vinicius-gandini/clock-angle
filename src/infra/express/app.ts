@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import express from 'express';
 
-import { setupMiddlewares } from './middlewares';
+import { setupMiddlewares } from './setup-middlewares';
 import router from './routes';
 
 export const app = express();

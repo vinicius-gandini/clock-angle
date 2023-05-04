@@ -15,4 +15,10 @@ export class BaseAngleRepository extends BaseRepository {
 
     return angle;
   };
+
+  saveAngle = async (hour: number, minute: number, angle: number) => {
+    await this.knex(this.table).insert({ hour, minute, angle });
+
+    return true;
+  }
 }
